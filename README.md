@@ -31,7 +31,7 @@ This project was created as part of a personal learning journey into .NET and C#
 
 1. Clone the repository:
 ```
-   git clone <repository-url>
+   git clone https://github.com/rubichandrap/HelloDotNet.git
    cd HelloDotNet
 ```
 
