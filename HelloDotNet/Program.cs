@@ -64,10 +64,10 @@ class Program
                     EditAnimal();
                     break;
                 case "6":
-                    // Logic to display all cats with a specified characteristic
+                    DisplayAnimalsByCharacteristic("cat");
                     break;
                 case "7":
-                    // Logic to display all dogs with a specified characteristic
+                    DisplayAnimalsByCharacteristic("dog");
                     break;
                 case "exit":
                     Console.WriteLine("Exiting the program.");
@@ -414,6 +414,36 @@ class Program
         if (!editAnimalUseCase.Execute(animalToEdit))
         {
             Console.WriteLine("Failed to update animal.");
+        }
+    }
+
+    private void DisplayAnimalsByCharacteristic(string species)
+    {
+        Console.WriteLine($"Displaying all {species}s with a specified characteristic:");
+        Console.WriteLine("Enter the characteristic to filter by (e.g., 'friendly', 'playful', etc.):");
+
+        readResult = Console.ReadLine();
+
+        if (readResult == null || readResult.Trim() == "")
+        {
+            Console.WriteLine("No characteristic entered. Returning to main menu.\n");
+            return;
+        }
+
+        var animals = listAnimalsUseCase.Execute()
+            .Where(a => a.Species.Equals(species, StringComparison.OrdinalIgnoreCase) &&
+                        (a.Personality.Contains(readResult, StringComparison.OrdinalIgnoreCase) ||
+                         a.Appearance.Contains(readResult, StringComparison.OrdinalIgnoreCase)));
+
+        if (!animals.Any())
+        {
+            Console.WriteLine($"No {species}s found with the characteristic '{readResult}'.\n");
+            return;
+        }
+
+        foreach (var animal in animals)
+        {
+            Console.WriteLine($"ID: {animal.Id}, Species: {animal.Species}, Age: {animal.Age}, Appearance: {animal.Appearance}, Personality: {animal.Personality}, Nickname: {animal.Nickname}");
         }
     }
 
