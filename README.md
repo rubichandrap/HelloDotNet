@@ -6,6 +6,11 @@ HelloDotNet is a simple console application designed as an exercise to explore a
 
 This project was created as part of a personal learning journey into .NET and C#, in preparation for a new role that requires proficiency in these technologies. The goal is to gain hands-on experience with C# syntax, .NET project structure, and common programming patterns.
 
+**Note:**  
+This project is also part of a module assessment for the Microsoft Learn training:  
+[Challenge Project - Develop branching and looping structures in C#](https://learn.microsoft.com/en-us/training/modules/challenge-project-develop-branching-looping-structures-c-sharp/1-introduction)
+
+
 ## Features
 
 - List all current pet information
